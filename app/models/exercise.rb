@@ -4,4 +4,6 @@ class Exercise < ApplicationRecord
 
     validates :name, presence: true
 
+    scope :no_equip, -> {where (equipment: 'none')} 
+
 end
