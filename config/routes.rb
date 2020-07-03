@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  
+  #root_route
+    root to: 'application#home'
+
   resources :reviews
   resources :exercises
   resources :users, excelpt: [:new]
