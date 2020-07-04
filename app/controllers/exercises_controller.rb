@@ -13,14 +13,15 @@ class ExercisesController < ApplicationController
         @exercise = Exercise.new(exercise_params)
         @exercise.set_user!(current_user)
         if @exercise.save
-            redirect_to exercises_path(@exercise)
+            redirect_to exercise_path(@exercise)
         else
             render :new 
         end
     end
     
     def show
-        @exercise.Exercise.find(params[:id])
+        @exercise = Exercise.find(params[:id])
+        render :show
     end
     
 private
