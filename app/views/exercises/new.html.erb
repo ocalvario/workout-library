@@ -1,2 +1,22 @@
 <h1>Add New Exercise </h1>
 
+
+<%= form_for(@exercise, { :controller => "exercises", :action => "new" }) do |f| %>
+
+    Name: 
+    <%= f.text_field :name%>
+    <br>
+    Body Part:
+    <%= f.text_field :body_part%>
+    <br>
+    Type:
+    <%= f.text_field :type%>
+    <br>
+    Equipment:
+    <%= f.text_field :equipment%>
+    <br>
+    Description:
+    <%= f.text_field :equipment%>     
+    <br>
+    <%= f.submit "Add Exercise" %>
+  <% end %>
