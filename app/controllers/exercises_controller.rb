@@ -23,15 +23,24 @@ class ExercisesController < ApplicationController
         @exercise = Exercise.find(params[:id])
         render :show
     end
+
+    def edit
+        @exercise = Exercise.find(params[:id])
+    end
     
+    def update
+        @exercise = Exercise.find(params[:id])
+        if @exercise.update(exercise_params)
+            render :show
+        else
+            render :edit
+        end  
+    end 
+
 private
 
     def exercise_params
         params.require(:exercise).permit(:name, :body_part, :exercise_group, :equipment, :description, :user_id)
-    end
-    
-    def edit
-        @exercise = Exercise.find(params[:id])
     end
 
 end

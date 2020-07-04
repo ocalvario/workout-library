@@ -1,7 +1,6 @@
-<h1>Add New Exercise </h1>
+<h1> Edit: <%=@exercise.name%> </h1>
 
-
-<%= form_for(@exercise, { :controller => "exercises", :action => "new" }) do |f| %>
+<%= form_for(@exercise, { :controller => "exercises", :action => "edit" }) do |f| %>
 
     Name: 
     <%= f.text_field :name%>
@@ -18,5 +17,5 @@
     Description:
     <%= f.text_field :description%>     
     <br>
-    <%= f.submit "Add Exercise" %>
+    <%= f.submit "Update Exercise" %>
   <% end %>
