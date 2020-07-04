@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     end
     
     def new  
+        @exercise = Exercise.all
         @review = Review.new
     end
 

@@ -1,1 +1,8 @@
 <h1>Create New Review</h1>
+
+<h3>Select an exercise to review: </h3>
+
+<%= form_for(:reviews, url: new_review_path) do |f| %>
+    <% options = options_from_collection_for_select(@exercise, 'id', 'name') %>
+    <% f.select :all_val, options %>
+<% end %>
