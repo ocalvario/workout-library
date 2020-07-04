@@ -9,7 +9,6 @@ class ExercisesController < ApplicationController
 
     def create
         @user = current_user
-        #id = @user.id
         @exercise = Exercise.new(exercise_params)
         @exercise.set_user!(current_user)
         if @exercise.save
