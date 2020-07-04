@@ -1,3 +1,9 @@
 <h1>Exercise Index</h1>
 
-<li><%= link_to "New Exercise", { :controller => "exercises", :action => "new" } %></li>
+<h3><%= link_to "New Exercise", { :controller => "exercises", :action => "new" } %></h3>
+
+<h2>Exercise List:</h2>
+
+<% @exercises.each do |exercise| %>
+    <%= exercise.name %>, (<%= exercise.user_id %>) <br>
+<% end %>

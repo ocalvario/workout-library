@@ -4,4 +4,10 @@ class Exercise < ApplicationRecord
 
     validates :name, presence: true
 
+    def set_user!(user)
+        self.user_id = user.id
+    
+        self.save!
+    end 
+
 end
