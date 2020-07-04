@@ -1,1 +1,10 @@
-<h1>Show Page</h1>
+<h1> <%=@exercise.name%> </h1>
+
+<ul>
+    <li> Body Part: <%=@exercise.body_part%> </li> <br>
+    <li> Exercise Group: <%=@exercise.exercise_group%> </li> <br>
+    <li> Equipment: <%=@exercise.equipment%> </li> <br>
+    <li> Description: <%=@exercise.description%> </li> <br>
+</ul>
+
+<h3><%= link_to "Back to Exercise Index", { :controller => "exercises", :action => "index" } %></h3>

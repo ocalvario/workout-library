@@ -28,6 +28,10 @@ private
 
     def exercise_params
         params.require(:exercise).permit(:name, :body_part, :exercise_group, :equipment, :description, :user_id)
-    end 
+    end
+    
+    def edit
+        @exercise = Exercise.find(params[:id])
+    end
 
 end

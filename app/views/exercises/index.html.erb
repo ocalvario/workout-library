@@ -5,5 +5,5 @@
 <h2>Exercise List:</h2>
 
 <% @exercises.each do |exercise| %>
-    <%= exercise.name %>, (<%= exercise.user_id %>) <br>
+    <%= link_to exercise.name, exercise_path(exercise) %>, (<%= exercise.user_id %>) <br>
 <% end %>
