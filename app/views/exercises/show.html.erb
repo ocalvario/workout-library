@@ -1,21 +1,45 @@
 <h1> <%=@exercise.name%> </h1>
 
-<ul>
-    <li> <u>Body Part</u>: <%=@exercise.body_part%> </li> <br>
-    <li> <u>Exercise Group</u>: <%=@exercise.exercise_group%> </li> <br>
-    <li> <u>Equipment</u>: <%=@exercise.equipment%> </li> <br>
-    <li> <u>Description</u>: <%=@exercise.description%> </li> <br>
-    <li> <u>Created By / Last Edited By</u>: <%=User.find(@exercise.user_id).username %>
-
-</ul>
+<h2>Exercise Overview</h2>
+<table>
+    <tr> 
+        <th>Category</th>
+        <th>Descrpiption</th>
+    </tr>
+    <tr>
+        <td>Body Part:</td>
+        <td><%=@exercise.body_part%></td>
+    </tr>
+    <tr>
+        <td>Exercise Group:</td>
+        <td><%=@exercise.exercise_group%></td>
+    </tr>
+    <tr>
+        <td>Equipment:</td>
+        <td><%=@exercise.equipment%></td>
+    </tr>
+    <tr>
+        <td>Description:</td>
+        <td><%=@exercise.description%></td>
+    </tr>
+    <tr>
+        <td>Created By / Last Edited By:</td>
+        <td><%=User.find(@exercise.user_id).username %></td>
+    </tr>         
+</table>
+<br><br>
 
 <h2> User Comments </h2>
  
     <% @reviews.each do |review| %>
         "<%= link_to review.content, review_path(review) %>" by <%= User.find(review.user_id).username or none %> <br>
     <% end %>
+    <br>
+    <button> <%= link_to "Add Review", new_review_path %> </button>
+
    <br><br>
-    
-<%= link_to "Edit Exercise", edit_exercise_path %> <br>
-<%= link_to 'Delete Exercise', exercise_path(@exercise), :method => :delete %> <br>
-<%= link_to "Back to Exercise Index", { :controller => "exercises", :action => "index" } %>
+
+<h2>Other Actions</h2>
+<button> <%= link_to "Edit Exercise", edit_exercise_path %> </button> <br> <br>
+<%= button_to 'Delete Exercise', exercise_path(@exercise), :method => :delete %> </button> <br> 
+<button> <%= link_to "Back to Exercise Index", { :controller => "exercises", :action => "index" } %> </button>
