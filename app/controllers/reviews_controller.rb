@@ -22,7 +22,8 @@ class ReviewsController < ApplicationController
 
     def show
         @review = Review.find(params[:id])
-
+        @user = User.find(@review.user_id)
+        @exercise = Exercise.find(@review.exercise_id)
         render :show
     end 
 
