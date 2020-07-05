@@ -8,12 +8,15 @@ Rails.application.routes.draw do
     get '/signup', to: 'users#new'
     post '/signup', to: 'users#create'
 
-    #Logging In
+  #Logging In
 
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  get '/logout', to: 'sessions#destroy'
+    get '/login', to: 'sessions#new'
+    post '/login', to: 'sessions#create'
+    get '/logout', to: 'sessions#destroy'
 
+  #Specific Exercise Indices
+
+    get 'exercises/bodyparts', to: 'exercises#bodyparts'
  
   resources :reviews
   resources :users
