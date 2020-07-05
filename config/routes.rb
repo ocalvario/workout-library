@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   #root_route
-    root to: 'application#home'
+    root to: 'static#home'
     
 
   #Signing Up 
