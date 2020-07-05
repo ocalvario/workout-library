@@ -6,14 +6,14 @@
     Name: 
     <%= f.text_field :name%>
     <br>
-    Body Part:
-    <%= f.text_field :body_part%>
+    <%=f.label :body_part %>:
+    <%= f.select :body_part, ['Arms', 'Back', 'Chest', 'Core', 'Legs', 'Other'] %>
     <br>
-    Group:
-    <%= f.text_field :exercise_group%>
+    <%=f.label :exercise_group %>: 
+    <%= f.select :exercise_group, ['Primary Lift', 'Secondary Lift', 'Warmup', 'Cooldown'] %>
     <br>
-    Equipment:
-    <%= f.text_field :equipment%>
+    <%=f.label :equipment %>: 
+    <%= f.select :equipment, ['Barbell', 'Body Weight', 'Cables', 'Dumbells', 'Kettlebells', 'Exercise Machine'] %>
     <br>
     Description:
     <%= f.text_field :description%>     
