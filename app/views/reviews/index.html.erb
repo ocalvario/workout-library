@@ -1,0 +1,5 @@
+<h1>Reviews Home</h1>
+
+<% @users.each do |user| %>
+    <li> <%= user.username %>: <%= user.reviews_count %> </li>
+<%  end %>
