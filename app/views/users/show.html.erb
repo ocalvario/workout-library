@@ -1,5 +1,17 @@
 <h1><%= @user.username %>'s Profile</h1>
 
-<li><%= link_to "Exercise Index", { :controller => "exercises", :action => "index" } %></li>
+<h2>Quick Links</h3>
+    <li><%= link_to "Exercise Index", { :controller => "exercises", :action => "index" } %></li>
+    <li><%= link_to "New Exercise", { :controller => "exercises", :action => "new" } %></li>
+    <li><%= link_to "New Review", { :controller => "reviews", :action => "new" } %></li>
 
-<li><%= link_to "New Review", { :controller => "reviews", :action => "new" } %></li>
+<h2>Exercises Created/Edited</h2>
+    <% @exercises.each do |exercise| %>
+        <li> <%= link_to exercise.name, exercise_path(exercise) %> </li>
+    <% end %>
+
+<h2>Reviews Added</h2>
+    <% @reviews.each do |review| %>
+        <li> <%=Exercise.find(review.exercise_id).name %>: <%= link_to review.content, review_path(review) %> </li>
+    <% end %>
+        
