@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
-
+    
     def index
         @reviews = Review.all
+        @users = User.order(reviews_count: :desc).all
     end
     
     def new  
@@ -32,5 +33,7 @@ class ReviewsController < ApplicationController
     def review_params
         params.require(:review).permit(:content, :exercise_id, :user_id)
     end
+
+    
 
 end
