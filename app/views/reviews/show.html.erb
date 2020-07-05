@@ -1,7 +1,5 @@
-<h1> Comment No. <%= @review.id %> </h1> 
+<h1> <%= @user.username %> on <%= @exercise.name %>  </h1> 
 
-<ul>
-    <li> Exercise: <%= @exercise.name %>
-    <li> Username: <%= @user.username %>
-    <li> Comment: <%= @review.content %>
-</ul>
+<u>Comment</u>: <%= @review.content %>
+
+<%= link_to "Edit Review", edit_review_path %> <br>

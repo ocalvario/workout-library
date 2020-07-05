@@ -1,0 +1,12 @@
+<h1>Edit Review</h1>
+
+<%= form_for(@review, { :controller => "reviews", :action => "edit" }) do |f| %>
+    <%= f.label :exercise_id %>
+    <%= f.select :exercise_id, options_from_collection_for_select(@exercise, 'id', 'name')  %>
+        <br>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+        <br>
+    <%= f.submit "Edit Review" %>
+
+<% end %>

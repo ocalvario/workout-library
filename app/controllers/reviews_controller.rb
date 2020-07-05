@@ -28,6 +28,23 @@ class ReviewsController < ApplicationController
         render :show
     end 
 
+    def edit
+        @exercise = Exercise.all
+        @review = Review.find(params[:id])
+    end
+    
+    def update      
+        @review = Review.find(params[:id])
+        @user = User.find(@review.user_id)
+        @exercise = Exercise.find(@review.exercise_id)
+        if @review.update(review_params)
+            @review.set_user!(current_user)
+            render :show
+        else
+            render :edit
+        end  
+    end 
+
     private
 
     def review_params
