@@ -1,6 +1,39 @@
 <h1>Reviews Home</h1>
 
-<u>Most Active Commenter</u>: <%= @commenter.username %> (<%= @commenter.reviews_count %>) <br>
-<u>Most Commented Exercise </u>: <%= @popular.name %> (<%= @popular.reviews_count %>) <br><br>
+<h2>For Everyone Keeping Track:</h2>
+<table>
+    <tr>
+        <th>Superlative</th>
+        <th>Details</th>
+    </tr>
+    <tr>
+        <td>Most Active Commenter:</td>
+        <td><%= @commenter.username %> (<%= @commenter.reviews_count %>)</td>
+    </tr>  
+    <tr>
+        <td>Most Commented Exercise:</td>
+        <td><%= link_to @popular.name, exercise_path(@popular) %> (<%= @popular.reviews_count %>)</td>
+    </tr>
+    <tr>
+        <td>Most Recent Comment:</td>
+        <td>"<%= @latest.content %>" by <%= User.find(@latest.user_id).username %> </td>
+    </tr>    
+</table>
 
-<u>Most Recent Comment</u>: "<%= @latest.content %>" by <%= User.find(@latest.user_id).username %>
+<h2>Full List of Reviews </h2>
+<h4>By most recent</h4>
+
+<table>
+    <tr>
+        <th>Exercise</th>
+        <th>Username</th>
+        <th>Comment</th>
+    </tr>
+        <% @reviews.each do |review| %>
+            <tr>
+                <td> <%= Exercise.find(review.exercise_id).name %> </td>
+                <td> <%= User.find(review.user_id).username %> </td>
+                <td> <%= link_to review.content, review_path(review) %> </td>
+            </tr>
+        <% end %>
+</table>

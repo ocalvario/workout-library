@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
     
     def index
-        @reviews = Review.all
-        @latest = @reviews.last
+        @reviews = Review.order(id: :desc).all
+        @latest = @reviews.first
         @commenter = User.order(reviews_count: :desc).first
         @popular = Exercise.order(reviews_count: :desc).first
     end
