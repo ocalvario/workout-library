@@ -30,6 +30,7 @@ class ExercisesController < ApplicationController
     
     def update
         @exercise = Exercise.find(params[:id])
+        @reviews = Review.where(exercise_id: @exercise.id)
         if @exercise.update(exercise_params)
             render :show
         else
