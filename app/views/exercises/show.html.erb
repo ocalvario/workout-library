@@ -10,14 +10,13 @@
 </ul>
 
 <h2> User Comments </h2>
-
-   <li> 
+ 
     <% @reviews.each do |review| %>
-        "<%= link_to review.content, review_path(review) %>" by <%= User.find(review.user_id).username%> <br>
+        "<%= link_to review.content, review_path(review) %>" by <%= User.find(review.user_id).username or none %> <br>
     <% end %>
    </li>
    <br><br>
     
-<%= button_to "Edit Exercise", edit_exercise_path %> <br>
-<%= button_to 'Delete Exercise', exercise_path(@exercise), :method => :delete %> <br>
-<%= button_to "Back to Exercise Index", { :controller => "exercises", :action => "index" } %>
+<%= link_to "Edit Exercise", edit_exercise_path %> <br>
+<%= link_to 'Delete Exercise', exercise_path(@exercise), :method => :delete %> <br>
+<%= link_to "Back to Exercise Index", { :controller => "exercises", :action => "index" } %>

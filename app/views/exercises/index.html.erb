@@ -5,5 +5,5 @@
 <h2>Exercise List:</h2>
 
 <% @exercises.each do |exercise| %>
-    <%= link_to exercise.name, exercise_path(exercise) %> <br>
+    <li> <%= link_to exercise.name, exercise_path(exercise) %> </li> <br>
 <% end %>
