@@ -1,10 +1,12 @@
 <h1> <%=@exercise.name%> </h1>
 
 <ul>
-    <li> Body Part: <%=@exercise.body_part%> </li> <br>
-    <li> Exercise Group: <%=@exercise.exercise_group%> </li> <br>
-    <li> Equipment: <%=@exercise.equipment%> </li> <br>
-    <li> Description: <%=@exercise.description%> </li> <br>
+    <li> <u>Body Part</u>: <%=@exercise.body_part%> </li> <br>
+    <li> <u>Exercise Group</u>: <%=@exercise.exercise_group%> </li> <br>
+    <li> <u>Equipment</u>: <%=@exercise.equipment%> </li> <br>
+    <li> <u>Description</u>: <%=@exercise.description%> </li> <br>
+    <li> <u>Created By / Last Edited By</u>: <%=User.find(@exercise.user_id).username %>
+
 </ul>
 
 <h2> User Comments </h2>
@@ -14,9 +16,8 @@
         "<%= link_to review.content, review_path(review) %>" by <%= User.find(review.user_id).username%> <br>
     <% end %>
    </li>
-
-<h3> <%= link_to "Edit Exercise", edit_exercise_path %> </h3>
-<br>
-<h3> <%= button_to 'Delete Exercise', exercise_path(@exercise), :method => :delete %> </h3>
-<br>
-<h3><%= link_to "Back to Exercise Index", { :controller => "exercises", :action => "index" } %></h3>
+   <br><br>
+    
+<%= button_to "Edit Exercise", edit_exercise_path %> <br>
+<%= button_to 'Delete Exercise', exercise_path(@exercise), :method => :delete %> <br>
+<%= button_to "Back to Exercise Index", { :controller => "exercises", :action => "index" } %>

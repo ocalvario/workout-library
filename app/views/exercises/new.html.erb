@@ -3,7 +3,7 @@
 
 <%= form_for(@exercise, { :controller => "exercises", :action => "new" }) do |f| %>
 
-    Name: 
+  <%=f.label :name %>: 
     <%= f.text_field :name%>
     <br>
     <%=f.label :body_part %>:
@@ -15,7 +15,7 @@
     <%=f.label :equipment %>: 
     <%= f.select :equipment, ['Barbell', 'Body Weight', 'Cables', 'Dumbells', 'Kettlebells', 'Exercise Machine'] %>
     <br>
-    Description:
+    <%=f.label :description %>: 
     <%= f.text_field :description%>     
     <br>
     <%= f.submit "Add Exercise" %>

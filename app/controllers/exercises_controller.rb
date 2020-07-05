@@ -32,6 +32,7 @@ class ExercisesController < ApplicationController
         @exercise = Exercise.find(params[:id])
         @reviews = Review.where(exercise_id: @exercise.id)
         if @exercise.update(exercise_params)
+            @exercise.set_user!(current_user)
             render :show
         else
             render :edit
