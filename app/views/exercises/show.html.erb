@@ -7,6 +7,14 @@
     <li> Description: <%=@exercise.description%> </li> <br>
 </ul>
 
+<h2> User Comments </h2>
+
+   <li> 
+    <% @reviews.each do |review| %>
+        "<%= link_to review.content, review_path(review) %>" by <%= User.find(review.user_id).username%> <br>
+    <% end %>
+   </li>
+
 <h3> <%= link_to "Edit Exercise", edit_exercise_path %> </h3>
 <br>
 <h3> <%= button_to 'Delete Exercise', exercise_path(@exercise), :method => :delete %> </h3>

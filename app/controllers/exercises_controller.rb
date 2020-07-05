@@ -20,6 +20,7 @@ class ExercisesController < ApplicationController
     
     def show
         @exercise = Exercise.find(params[:id])
+        @reviews = Review.where(exercise_id: @exercise.id)
         render :show
     end
 
