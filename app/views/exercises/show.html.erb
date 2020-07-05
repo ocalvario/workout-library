@@ -14,7 +14,6 @@
     <% @reviews.each do |review| %>
         "<%= link_to review.content, review_path(review) %>" by <%= User.find(review.user_id).username or none %> <br>
     <% end %>
-   </li>
    <br><br>
     
 <%= link_to "Edit Exercise", edit_exercise_path %> <br>

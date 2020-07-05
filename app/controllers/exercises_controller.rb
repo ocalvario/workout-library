@@ -2,6 +2,10 @@ class ExercisesController < ApplicationController
     def index
         @exercises = Exercise.order(:name).all
     end
+
+    def bodyparts
+        @exercises = Exercise.order(:name).all
+    end 
     
     def new  
         @exercise = Exercise.new
