@@ -9,7 +9,10 @@
 <div class="container">
 
 <ul class="nav navbar-nav navbar-right">
-        <button> <%= link_to "Log Out", logout_path, method: :destroy %></li> </button>
+        <% if logged_in? %>
+        <button> <%= link_to "Log Out", logout_path, method: :destroy %> </button>
+        <button> <%= link_to "User Home", user_path(current_user) %> </button>
+        <% end %>
 </ul>
 </div>
 
