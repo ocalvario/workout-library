@@ -1,5 +1,6 @@
 <h1> <%= @user.username %> on <%= @exercise.name %>  </h1> 
 
-<u>Comment</u>: <%= @review.content %>
+<u>Comment</u>: <%= @review.content %> <br><br>
 
-<%= link_to "Edit Review", edit_review_path %> <br>
+<button> <%= link_to "Edit Review", edit_review_path %> </button> <br>
+<%= button_to 'Delete Review', review_path(@review), :method => :delete %> <br>
