@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
     belongs_to :user, counter_cache: true
-    belongs_to :exercise
+    belongs_to :exercise, counter_cache: true
 
     validates :content, presence: true
 

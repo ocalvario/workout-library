@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
     def index
         @reviews = Review.all
         @commenter = User.order(reviews_count: :desc).first
+        @popular = Exercise.order(reviews_count: :desc).first
     end
     
     def new  
