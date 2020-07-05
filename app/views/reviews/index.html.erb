@@ -1,4 +1,6 @@
 <h1>Reviews Home</h1>
 
 <u>Most Active Commenter</u>: <%= @commenter.username %> (<%= @commenter.reviews_count %>) <br>
-<u>Most Commented Exercise </u>: <%= @popular.name %> (<%= @popular.reviews_count %>) <br>
+<u>Most Commented Exercise </u>: <%= @popular.name %> (<%= @popular.reviews_count %>) <br><br>
+
+<u>Most Recent Comment</u>: "<%= @latest.content %>" by <%= User.find(@latest.user_id).username %>
