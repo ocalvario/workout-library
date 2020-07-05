@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
     
     def index
         @reviews = Review.all
-        @users = User.order(reviews_count: :desc).all
+        @commenter = User.order(reviews_count: :desc).first
     end
     
     def new  
@@ -43,7 +43,16 @@ class ReviewsController < ApplicationController
         else
             render :edit
         end  
-    end 
+    end
+
+    def destroy
+        @user = current_user
+        @review = Review.find(params[:id])
+        @review.destroy
+        redirect_to user_path(current_user)
+    end
+    
+    
 
     private
 
