@@ -5,8 +5,9 @@
 
 <h2>Specific Indices:</h2>
 
-<%= link_to "By Body Part",  { :controller => "exercises", :action => "bodyparts" }  %>
-<%= link_to "By Equipment Tyle",  { :controller => "exercises", :action => "equipment" }  %>
+<%= link_to "By Muscle Group",  { :controller => "exercises", :action => "bodyparts" } %> &nbsp;&nbsp;&nbsp; 
+<%= link_to "By Exercise Group",  { :controller => "exercises", :action => "exercisegroup" } %> &nbsp;&nbsp;&nbsp; 
+<%= link_to "By Equipment Type",  { :controller => "exercises", :action => "equipment" } %>
 
 <h2>Full Exercise List (Alphabetized):</h2>
 
@@ -18,7 +19,7 @@
     <% @exercises.each do |exercise| %>
         <tr>
         <td> <%= link_to exercise.name, exercise_path(exercise) %> </td>
-        <td> <%= User.find(exercise.user_id).username
+        <td> <%= User.find(exercise.user_id).username %> <td>
         </tr>
     <% end %>
 </table>

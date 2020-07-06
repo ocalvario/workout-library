@@ -1,0 +1,16 @@
+<h1>Exercise List by Equipment Type</h1>
+
+<table>
+    <tr>
+        <th>Equipment Type</th>
+        <th>Exercise Name</th>
+        <th>Created/Edited By </th>
+    </tr>
+    <% @exercises.each do |exercise| %>
+        <tr>
+        <td> <%= exercise.equipment %> </td>
+        <td> <%= link_to exercise.name, exercise_path(exercise) %> </td>
+        <td> <%= User.find(exercise.user_id).username %> </td>
+        </tr>
+    <% end %>
+</table>

@@ -6,7 +6,11 @@ class ExercisesController < ApplicationController
     def bodyparts
         @exercises = Exercise.order(:body_part, :name).all
     end
-    
+
+    def exercisegroup
+        @exercises = Exercise.order(:exercise_group, :name).all
+    end    
+
     def equipment
         @exercises = Exercise.order(:equipment, :name).all
     end 

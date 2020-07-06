@@ -1,14 +1,14 @@
-<h1>Exercise List by Equipment Type</h1>
+<h1>Exercise List by Exercise Group</h1>
 
 <table>
     <tr>
-        <th>Muscle Group</th>
+        <th>Exercise Group</th>
         <th>Exercise Name</th>
         <th>Created/Edited By </th>
     </tr>
     <% @exercises.each do |exercise| %>
         <tr>
-        <td> <%= exercise.body_part %> </td>
+        <td> <%= exercise.exercise_group %> </td>
         <td> <%= link_to exercise.name, exercise_path(exercise) %> </td>
         <td> <%= User.find(exercise.user_id).username %> </td>
         </tr>
