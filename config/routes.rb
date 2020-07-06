@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   #Specific Exercise Indices
 
     get 'exercises/bodyparts', to: 'exercises#bodyparts'
+    get 'exercises/equipment', to: 'exercises#equipment'
  
   resources :reviews
   resources :users

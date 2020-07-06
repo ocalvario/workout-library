@@ -4,7 +4,11 @@ class ExercisesController < ApplicationController
     end
 
     def bodyparts
-        @exercises = Exercise.order(:name).all
+        @exercises = Exercise.order(:body_part, :name).all
+    end
+    
+    def equipment
+        @exercises = Exercise.order(:equipment, :name).all
     end 
     
     def new  
