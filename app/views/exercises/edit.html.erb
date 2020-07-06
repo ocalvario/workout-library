@@ -1,22 +1,35 @@
 <h1> Edit: <%=@exercise.name%> </h1>
 
+<h2> Revised Exercise Details </h2>
 <%= form_for(@exercise, { :controller => "exercises", :action => "edit" }) do |f| %>
 
-  <%=f.label :name %>: 
-  <%= f.text_field :name%>
+<table>
+<table>  
+<tr>
+ <th>Detail </th>
+ <th>User Input</th>
+ </tr>
+  <tr>
+    <td> <%=f.label :name %> </td> 
+    <td> <%= f.text_field :name%> </td>
+  </tr>
+  <tr>
+    <td> <%=f.label :body_part %> </td>
+    <td> <%= f.select :body_part, ['Arms', 'Back', 'Chest', 'Core', 'Legs', 'Shoulder','Other'] %> </td>
+  </tr>
+  <tr>
+    <td> <%=f.label :exercise_group %> </td>
+    <td> <%= f.select :exercise_group, ['Primary Lift', 'Secondary Lift', 'Warmup', 'Cooldown'] %> </td>
+  </tr>
+  <tr>
+    <td> <%=f.label :equipment %> </td> 
+    <td> <%= f.select :equipment, ['Barbell', 'Body Weight', 'Cables', 'Dumbells', 'Kettlebells', 'Exercise Machine'] %> </td>
+  </tr>
+  <tr>
+    <td> <%=f.label :description %> </td>
+    <td> <%= f.text_field :description%> </td> 
+  </tr>
+  </table>
   <br>
-  <%=f.label :body_part %>:
-  <%= f.select :body_part, ['Arms', 'Back', 'Chest', 'Core', 'Legs', 'Shoulder','Other'] %>
-  <br>
-  <%=f.label :exercise_group %>: 
-  <%= f.select :exercise_group, ['Primary Lift', 'Secondary Lift', 'Warmup', 'Cooldown'] %>
-  <br>
-  <%=f.label :equipment %>: 
-  <%= f.select :equipment, ['Barbell', 'Body Weight', 'Cables', 'Dumbells', 'Kettlebells', 'Exercise Machine'] %>
-  <br>
-  <%=f.label :description %>: 
-  <%= f.text_field :description%>     
-  <br> 
-    <br>
     <%= f.submit "Update Exercise" %>
   <% end %>

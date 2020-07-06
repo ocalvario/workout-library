@@ -1,15 +1,15 @@
 <h1>Exercise Index</h1>
 
-<h2> Quick Links:</h2>
+<h2> Quick Links</h2>
 <h4><%= link_to "New Exercise", { :controller => "exercises", :action => "new" } %></h4>
 
-<h2>Specific Indices:</h2>
+<h2>Specific Indices</h2>
 
-<%= link_to "By Muscle Group",  { :controller => "exercises", :action => "bodyparts" } %> &nbsp;&nbsp;&nbsp; 
-<%= link_to "By Exercise Group",  { :controller => "exercises", :action => "exercisegroup" } %> &nbsp;&nbsp;&nbsp; 
-<%= link_to "By Equipment Type",  { :controller => "exercises", :action => "equipment" } %>
+<button> <%= link_to "By Muscle Group",  { :controller => "exercises", :action => "bodyparts" } %> </button> &nbsp;&nbsp;&nbsp; 
+<button> <%= link_to "By Exercise Group",  { :controller => "exercises", :action => "exercisegroup" } %> </button> &nbsp;&nbsp;&nbsp; 
+<button> <%= link_to "By Equipment Type",  { :controller => "exercises", :action => "equipment" } %> </button>
 
-<h2>Full Exercise List (Alphabetized):</h2>
+<h2>Full Exercise List</h2>
 <h3>Total Exercises: <%= @exercises.count %> </h3>
 
 <table>

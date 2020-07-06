@@ -2,23 +2,36 @@
 
 <h2>Quick Links</h3>
     
-    <%= link_to "New Exercise", { :controller => "exercises", :action => "new" } %>&nbsp;&nbsp;&nbsp;         
-    <%= link_to "New Review", { :controller => "reviews", :action => "new" } %>
+    <button> <%= link_to "New Exercise", { :controller => "exercises", :action => "new" } %> </button> &nbsp;&nbsp;&nbsp;         
+    <button> <%= link_to "New Review", { :controller => "reviews", :action => "new" } %> </button>
 
 <h2>Exercises Created/Edited</h2>
+<h4>Total Exercises: <%=@exercises.count %> </h4>
+    <table>
+    <tr>
+        <th>Exercise</th>
+        <th>Dated Updated</th>
+    </tr>
     <% @exercises.each do |exercise| %>
-        <li> <%= link_to exercise.name, exercise_path(exercise) %> </li>
+    <tr>
+        <td> <%= link_to exercise.name, exercise_path(exercise) %> </td>
+        <td> <%= exercise.updated_at.strftime("%m-%d-%Y") %> </td>
+    </tr>
     <% end %>
+    </table>
 
 <h2>Reviews Added</h2>
+<h4>Total Reviews: <%=@reviews.count %> </h4>
         <table>
             <tr>
                 <th>Exercise</th>
+                <th>Date</th>
                 <th>Comment</th>
             </tr>
             <tr>
                 <% @reviews.each do |review| %>
-                <td> <%=link_to Exercise.find(review.exercise_id).name, exercise_path(review.exercise_id) %>: </td>
+                <td> <%=link_to Exercise.find(review.exercise_id).name, exercise_path(review.exercise_id) %> </td>
+                <td> <%= review.updated_at.strftime("%m-%d-%Y") %> </td>
                 <td> <%= link_to review.content, review_path(review) %> </td>
             </tr>
                 <% end %>
