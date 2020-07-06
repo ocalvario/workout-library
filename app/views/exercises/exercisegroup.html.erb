@@ -10,7 +10,7 @@
         <tr>
         <td> <%= exercise.exercise_group %> </td>
         <td> <%= link_to exercise.name, exercise_path(exercise) %> </td>
-        <td> <%= User.find(exercise.user_id).username %> </td>
+        <td> <%= link_to User.find(exercise.user_id).username, user_path(exercise.user_id) %> </td>
         </tr>
     <% end %>
 </table>

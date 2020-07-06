@@ -18,10 +18,11 @@
             </tr>
             <tr>
                 <% @reviews.each do |review| %>
-                <td> <%=Exercise.find(review.exercise_id).name %>: </td>
+                <td> <%=link_to Exercise.find(review.exercise_id).name, exercise_path(review.exercise_id) %>: </td>
                 <td> <%= link_to review.content, review_path(review) %> </td>
-                <% end %>
             </tr>
+                <% end %>
+
         </table>
     
         
