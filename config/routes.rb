@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   #root_route
     root to: 'static#home'
     
+    get '/auth/:provider/callback' => 'sessions#omniauth'
 
   #Signing Up 
     get '/signup', to: 'users#new'

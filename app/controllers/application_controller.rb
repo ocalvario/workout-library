@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
     
     def log_out
       session[:user_id] = nil
+      session[:omniauth] = nil
       redirect_to '/'
     end
 
