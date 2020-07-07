@@ -7,20 +7,17 @@
 </head>
 <body>
 
-<header class="navbar navbar-fixed-top navbar-inverse">
-<div class="container">
-
-<ul class="nav navbar-nav navbar-right">
+<header>
+<div class="equalize">
         <% if logged_in? %>
         <button> <%= link_to "Log Out", logout_path, method: :destroy %> </button>
         <button> <%= link_to "User Home", user_path(current_user) %> </button>
         <button> <%= link_to "Exercise Index", { :controller => "exercises", :action => "index" } %> </button>
-        <button>   <li><%= link_to "Review Index", { :controller => "reviews", :action => "index" } %> </button>
+        <button>  <%= link_to "Review Index", { :controller => "reviews", :action => "index" } %> </button>
         <% end %>
-</ul>
 </div>
 
-<div class="container">
+<div>
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>

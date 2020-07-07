@@ -14,6 +14,11 @@
  *= require_self
  */
 
+ .equalize {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+ }
 
 h1 {
     width: 30%;
