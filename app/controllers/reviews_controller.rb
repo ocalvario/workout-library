@@ -55,6 +55,7 @@ class ReviewsController < ApplicationController
             @review.destroy
             redirect_to user_path(current_user)
         else
+            flash[:alert] = "You cannot delete another user's comment."
             redirect_to user_path(current_user)
         end
     end

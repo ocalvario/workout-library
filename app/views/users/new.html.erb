@@ -3,14 +3,33 @@
 
 <%= form_for(@user, url: signup_path) do |f| %>
 
-     <%= f.label :email %>
-     <%= f.text_field :email%>
-     <br>
-     <%= f.label :username %>
-     <%= f.text_field :username%>     
-     <br>
-     <%= f.label :password %>
-     <%= f.password_field :password %>
-    <br> 
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h3>The following errors were detected:</h3>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <table>
+  <div class="field_with_errors">
+  <tr>
+    <td> <%= f.label :email %> </td>
+    <td> <%= f.text_field :email%> </td>
+  </tr>
+  <tr>
+    <td> <%= f.label :username %> </td>
+    <td> <%= f.text_field :username%> </td>     
+  </tr>
+  <tr>
+    <td> <%= f.label :password %> </td>
+    <td> <%= f.password_field :password %> </td>
+  </tr>
+</div>
+</table>
+<br> 
      <%= f.submit "Sign Up"%>
    <% end %>

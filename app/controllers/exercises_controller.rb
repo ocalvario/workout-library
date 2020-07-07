@@ -50,10 +50,14 @@ class ExercisesController < ApplicationController
     end 
 
     def destroy
-        @user = current_user
         @exercise = Exercise.find(params[:id])
-        @exercise.destroy
-        redirect_to user_path(current_user)
+        if @exercise.reviews_count == 0
+            @exercise.destroy
+            redirect_to user_path(current_user)
+        else
+          flash[:alert] = "You cannot delete an exercise with comments"
+          redirect_to user_path(current_user)
+        end    
     end
 
 private

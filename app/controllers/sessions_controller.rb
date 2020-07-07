@@ -31,6 +31,7 @@ def validate_login
       log_in(user)
       redirect_to user
     else
+      flash[:alert] = "Invalid credentials, please try again."
       render :new
     end
   end

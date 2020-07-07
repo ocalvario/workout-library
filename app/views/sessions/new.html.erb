@@ -1,9 +1,19 @@
 <h1>Login</h1>
 
 <%= form_for(:session, url: login_path) do |f| %>
-    Username: <%= f.text_field :username %> <br>
-    Password: <%= f.password_field :password %> <br>
+
+<table>
+    <tr>
+        <td> Username: </td>
+        <td> <%= f.text_field :username %> </td>
+    </tr>
+    <tr>
+        <td> Password: </td>
+        <td> <%= f.password_field :password %> </td>
+    </tr>
+</table>
+<br>
     <%= f.submit "Login" %>
 <% end %>
-
-<%= link_to "Log In with Google", '/auth/google_oauth2' %>
+<br>
+ <button> <%= link_to "Log In with Google", '/auth/google_oauth2' %> <img src="https://tinyurl.com/yconnv5a" width="15" height="15"> </button>
