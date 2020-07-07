@@ -31,14 +31,16 @@ class ReviewsController < ApplicationController
     end 
 
     def edit
-        @exercise = Exercise.all
-        @review = Review.find(params[:id])
+        if current_user.id == Review.find(params[:id]).user_id
+            @exercise = Exercise.all
+        else
+            redirect_to user_path(current_user) 
+        end 
     end
     
     def update      
         @review = Review.find(params[:id])
-        @user = User.find(@review.user_id)
-        @exercise = Exercise.find(@review.exercise_id)
+        @exercise = Exercise.all
         if @review.update(review_params)
             render :show
         else
@@ -47,10 +49,14 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        @user = current_user
-        @review = Review.find(params[:id])
-        @review.destroy
-        redirect_to user_path(current_user)
+        if current_user.id == Review.find(params[:id]).user_id
+            @user = current_user
+            @review = Review.find(params[:id])
+            @review.destroy
+            redirect_to user_path(current_user)
+        else
+            redirect_to user_path(current_user)
+        end
     end
     
     
