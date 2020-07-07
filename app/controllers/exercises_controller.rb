@@ -22,8 +22,8 @@ class ExercisesController < ApplicationController
     def create
         @user = current_user
         @exercise = Exercise.new(exercise_params)
-        @exercise.set_user!(current_user)
         if @exercise.save
+            @exercise.set_user!(current_user)
             redirect_to exercise_path(@exercise)
         else
             render :new 
