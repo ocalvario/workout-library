@@ -1,47 +1,60 @@
 <!DOCTYPE html>
-<html>
+
 <style>
 
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
 
 h1 {
-    width: 30%;
-    color: white;
-    text-transform: uppercase;
-    background-color: #00008B;
-    }
-
-h2 {
-    width: 30%; 
-    color: white;
-    font-variant: small-caps;
-    background-color: #4169E1;
-  }  
-
-table {
-      width: 30%;
-      border-bottom: 1px solid black;
-      }
-
-  th { 
-      text-align: left;
-      font-weight:normal;
-      border-bottom: 1px solid black;
-      background-color: #D3D3D3;
-    }
-
-  td { 
-      vertical-align: baseline;
-      border-bottom: 1px solid lightgray;
-    }
-
-  tr:nth-child(even) {
-    background: #F0F8FF
+  width: 30%;
+  color: white;
+  text-transform: uppercase;
+  background-color: #00008B;
   }
 
-  a { text-decoration: none;}
+h2 {
+  width: 30%; 
+  color: white;
+  font-variant: small-caps;
+  background-color: #4169E1;
+}  
+
+table {
+    width: 30%;
+    border-bottom: 1px solid black;
+    }
+
+th { 
+    text-align: left;
+    font-weight:normal;
+    border-bottom: 1px solid black;
+    background-color: #D3D3D3;
+  }
+
+td { 
+    vertical-align: baseline;
+    border-bottom: 1px solid lightgray;
+  }
+
+tr:nth-child(even) {
+  background: #F0F8FF
+}
+
+a { text-decoration: none;}
+
+.field_with_errors {
+  color: red;
+ }
+
+
 
 </style>
 
+
+<html>
 <head>
   <title>Workout Library</title>
 </head>
@@ -60,6 +73,11 @@ table {
 </ul>
 </div>
 
-<%= yield %>
+<div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+    </div>
 </body>
 </html>
