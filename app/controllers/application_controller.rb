@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  
+  layout "application"
   #add_flash_types :info, :error
   helper_method :current_user, :logged_in?
 
