@@ -1,0 +1,18 @@
+<h1>Workout Index</h1>
+
+<h2>Full List of Workouts </h2>
+<h3>Total Workouts: <%= @workouts.count %>
+<h4><i>By most recent:</i></h4>
+
+<table>
+    <tr>
+        <th>Workout</th>
+        <th>Created By</th<
+    </tr>
+        <% @workouts.each do |workout| %>
+            <tr>
+                <td> <%= link_to workout.name, workout_path(workout) %> </td>
+                <td> <%= link_to User.find(workout.user_id).username, user_path(workout.user_id) %> </td>
+            </tr>
+        <% end %>
+</table>

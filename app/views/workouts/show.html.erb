@@ -1,1 +1,34 @@
-<h1>Workout Show Page</h1>
+<h1> <%= @workout.name %> </h1>
+
+Created By <%=User.find(@workout.user_id).username %>
+
+<h3>Routine</h3>
+<table>
+    <tr>
+        <th>No.</th>
+        <th>Exercise</th>
+    </tr>
+    <tr>
+        <td>First Exercise</td>
+        <td> <%= Exercise.find(@workout.first_exercise).name %> </td>
+    </tr>
+    <tr>
+        <td>Second Exercise</td>
+        <td> <%= Exercise.find(@workout.second_exercise).name %> </td>        
+    </tr>
+    <tr>
+        <td>Third Exercise</td>
+        <td> <%= Exercise.find(@workout.third_exercise).name %> </td>        
+    </tr>
+    <tr>
+        <td>Fourth Exercise</td>
+        <td> <%= Exercise.find(@workout.fourth_exercise).name %> </td>        
+    </tr>
+    <tr>
+        <td>Fifth Exercise</td>
+        <td> <%= Exercise.find(@workout.fifth_exercise).name %> </td>        
+    </tr>    
+
+</table>
+<br><br>
+<button> <%= link_to "Edit Workout", edit_workout_path %> </button> <br>

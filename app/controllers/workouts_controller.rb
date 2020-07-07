@@ -1,5 +1,9 @@
 class WorkoutsController < ApplicationController
   
+    def index
+        @workouts = Workout.all
+    end
+
     def new
         @workout = Workout.new
     end
@@ -17,7 +21,22 @@ class WorkoutsController < ApplicationController
     def show
         @workout = Workout.find(params[:id])
         render :show 
+    end
+    
+    def edit
+        @workout = Workout.find(params[:id])
+    end
+    
+    def update
+        @workout = Workout.find(params[:id])
+        @exercises = Exercise.all
+        if @workout.update(workout_params)
+            render :show
+        else
+            render :edit
+        end  
     end 
+    
 
 private
 
