@@ -1,0 +1,39 @@
+<h1>New Workout</h1>
+
+<%= form_for(@workout, { :controller => "workouts", :action => "new" }) do |f| %>
+
+<table>
+    <tr>
+        <th>Detail </th>
+        <th>User Input</th>        
+    </tr>
+    <tr>
+        <td> <%= f.label :name %> </td>
+        <td> <%= f.text_field :name %> </td>
+    </tr>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+    <tr>
+        <td> <%= f.label :first_exercise %> </td>
+        <td> <%= f.collection_select(:first_exercise, Exercise.all, :id, :name, include_blank: 'None') %> </td>
+    </tr>
+    <tr>
+        <td> <%= f.label :second_exercise %> </td>
+        <td> <%= f.collection_select(:second_exercise, Exercise.all, :id, :name, include_blank: 'None') %> </td>
+    </tr>
+    <tr>
+        <td> <%= f.label :third_exercise %> </td>
+        <td> <%= f.collection_select(:third_exercise, Exercise.all, :id, :name, include_blank: 'None') %> </td>
+    </tr>
+    <tr>
+        <td> <%= f.label :fourth_exercise %> </td>
+        <td> <%= f.collection_select(:fourth_exercise, Exercise.all, :id, :name, include_blank: 'None') %> </td>
+    </tr>
+    <tr>
+        <td> <%= f.label :fifth_exercise %> </td>
+        <td> <%= f.collection_select(:fourth_exercise, Exercise.all, :id, :name, include_blank: 'None') %> </td>
+    </tr>
+</table>
+    <br><br>
+    <%= f.submit "Add Exercise"%>
+
+<% end %>

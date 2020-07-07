@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 2020_07_07_195242) do
   end
 
   create_table "workouts", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.string "first_exercise"
+    t.string "second_exercise"
+    t.string "third_exercise"
+    t.string "fourth_exercise"
+    t.string "fifth_exercise"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
