@@ -3,12 +3,24 @@
 <h2> Revised Exercise Details </h2>
 <%= form_for(@exercise, { :controller => "exercises", :action => "edit" }) do |f| %>
 
+  <% if @exercise.errors.any? %>
+  <div id="error_explanation" class="errorcode">
+    <h3>The following errors were detected:</h3>
+    <ul>
+      <% @exercise.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <table>
 <table>  
 <tr>
  <th>Detail </th>
  <th>User Input</th>
  </tr>
+
   <tr>
     <td> <%=f.label :name %> </td> 
     <td> <%= f.text_field :name%> </td>
