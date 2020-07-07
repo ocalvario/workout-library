@@ -1,6 +1,37 @@
 <h1> <%= @user.username %> on <%= @exercise.name %>  </h1> 
 
-<u>Comment</u>: <%= @review.content %> <br><br>
+<h2>Comment Details</h2>
+<table>
+    <tr> 
+        <td> <h3> <u>Comment</u>: </h3> </td> 
+        <td> <h3> <%= @review.content %> </h3> </td>
+    </tr>
+</table>
+<br>
 
+<h2>Exercise Details</h2>
+
+<table>
+    <tr>
+        <th>Category</th>
+        <th>Detail</th>
+    </tr>
+    <tr>
+        <td>Total Comments</td>
+        <td> <%= @exercise.reviews_count %> </td>
+    </tr>
+    <tr>
+       <td>Muscle Group</td>
+        <td> <%= @exercise.body_part %> </td>
+    </tr>
+        <td>Exercise Group</td>
+        <td> <%= @exercise.exercise_group %> </td>
+    <tr>
+    </tr>
+        <td>Equipment Category</td>
+        <td> <%= @exercise.equipment %> </td>
+    <tr>
+</table>
+<br><br>
 <button> <%= link_to "Edit Review", edit_review_path %> </button> <br>
 <%= button_to 'Delete Review', review_path(@review), :method => :delete %> <br>
