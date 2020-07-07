@@ -1,12 +1,35 @@
 <h1>Create New Review</h1>
 
+<h2>Details Form </h2>
 <%= form_for(@review, { :controller => "reviews", :action => "new" }) do |f| %>
-    <%= f.label :exercise_id %>
-    <%= f.select :exercise_id, options_from_collection_for_select(@exercise, 'id', 'name')  %>
-        <br>
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-        <br>
-    <%= f.submit "Add Review" %>
 
+    <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h3>The following errors were detected:</h3>
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>  
+        <tr>
+            <th>Detail </th>
+            <th>User Input</th>
+        </tr> 
+  <div class="field_with_errors">
+        <tr>
+            <td> <%= f.label :exercise_id %> </td>
+            <td> <%= f.select :exercise_id, options_from_collection_for_select(@exercise, 'id', 'name') %> </td>
+        </tr>
+        <tr>
+            <td> <%= f.label :content %> </td>
+            <td> <%= f.text_field :content %> </td>
+        </tr>
+    </div>
+</table>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Add Review" %>
 <% end %>

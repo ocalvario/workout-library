@@ -14,10 +14,10 @@ class ReviewsController < ApplicationController
 
     def create
         @user = current_user
-        @review = Review.new (review_params)
-        @review.set_user!(current_user)
+        @exercise = Exercise.all
+        @review = Review.new(review_params)
         if @review.save
-           redirect_to review_path(@review)
+            redirect_to review_path(@review)
         else
             render :new
         end   
@@ -40,7 +40,6 @@ class ReviewsController < ApplicationController
         @user = User.find(@review.user_id)
         @exercise = Exercise.find(@review.exercise_id)
         if @review.update(review_params)
-            @review.set_user!(current_user)
             render :show
         else
             render :edit
