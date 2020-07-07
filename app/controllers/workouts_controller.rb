@@ -35,7 +35,13 @@ class WorkoutsController < ApplicationController
         else
             render :edit
         end  
-    end 
+    end
+    
+    def destroy
+        @workout = Workout.find(params[:id])
+        @workout.destroy
+        redirect_to user_path(current_user)    
+    end
     
 
 private

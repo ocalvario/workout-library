@@ -1,6 +1,6 @@
 <h1> <%= @workout.name %> </h1>
 
-Created By <%=User.find(@workout.user_id).username %>
+Created By: <%= link_to User.find(@workout.user_id).username, user_path(@workout.user_id) %>
 
 <h3>Routine</h3>
 <table>
@@ -10,25 +10,27 @@ Created By <%=User.find(@workout.user_id).username %>
     </tr>
     <tr>
         <td>First Exercise</td>
-        <td> <%= Exercise.find(@workout.first_exercise).name %> </td>
+        <td> <%= link_to Exercise.find(@workout.first_exercise).name, exercise_path(@workout.first_exercise) %> </td>
     </tr>
     <tr>
         <td>Second Exercise</td>
-        <td> <%= Exercise.find(@workout.second_exercise).name %> </td>        
+        <td> <%= link_to Exercise.find(@workout.second_exercise).name, exercise_path(@workout.second_exercise) %> </td>        
     </tr>
     <tr>
         <td>Third Exercise</td>
-        <td> <%= Exercise.find(@workout.third_exercise).name %> </td>        
+        <td> <%= link_to Exercise.find(@workout.third_exercise).name, exercise_path(@workout.third_exercise) %> </td>        
     </tr>
     <tr>
         <td>Fourth Exercise</td>
-        <td> <%= Exercise.find(@workout.fourth_exercise).name %> </td>        
+        <td> <%= link_to Exercise.find(@workout.fourth_exercise).name, exercise_path(@workout.fourth_exercise) %> </td>        
     </tr>
     <tr>
         <td>Fifth Exercise</td>
-        <td> <%= Exercise.find(@workout.fifth_exercise).name %> </td>        
+        <td> <%= link_to Exercise.find(@workout.fifth_exercise).name, exercise_path(@workout.fifth_exercise) %> </td>        
     </tr>    
 
 </table>
 <br><br>
-<button> <%= link_to "Edit Workout", edit_workout_path %> </button> <br>
+<button> <%= link_to "Edit Workout", edit_workout_path %> </button> <br><br>
+<%= button_to 'Delete Exercise', workout_path(@workout), :method => :delete %> </button> <br> 
+<button> <%= link_to "Back to Workout Index", { :controller => "workouts", :action => "index" } %> </button>
