@@ -31,19 +31,8 @@ def validate_login
       log_in(user)
       redirect_to user
     else
-      flash[:alert] = "Invalid credentials, please try again."
+      flash.now[:notice] = "Invalid credentials, please try again."
       render :new
     end
   end
-
-
 end 
-
-
-# 
-    #@user = User.find_by(username: params[:session][:username]) 
-            #if @user && @user.authenticate(params[:session][:password])
-                #session[:user_id] = @user.id
-                #redirect_to @user
-            #else
-                #render :new
