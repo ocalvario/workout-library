@@ -1,24 +1,19 @@
-# README
+Overview
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is a fitness resource designed as a repository to different workout tips and regimens. To start, signup using a unique usernmane and email account. Users can then log in to see different exercises as well as both tips related to those exercises and workouts comprised of these exercises. Users can add their own exercises and workout routines as well as add their own tips to exercises created by others. 
 
-Things you may want to cover:
+This is a Rails application.
 
-* Ruby version
+To install this app, follow these steps:
 
-* System dependencies
+* Fork and clone this repository. 
+* $ bundle install 
+* $ rails db:migrate 
+* $ rails server to open up the browser 
+* In your browser, enter http:localhost:3000.
 
-* Configuration
+Contributing: https://github.com/ocalvario
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Oter Details:
+* Ruby Version: 2.6.1
+* Rails Version: 6.0.3.2
