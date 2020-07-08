@@ -1,15 +1,16 @@
 <h1>Edit Workout</h1>
 
+<h2>Details Form </h2>
 <%= form_for(@workout, { :controller => "workouts", :action => "new" }) do |f| %>
 
     <% if @workout.errors.any? %>
-    <div id="error_explanation">
-      <h3>The following errors were detected:</h3>
-      <ul>
+    <div class="warning">
+      <h4>The following errors were detected:</h4>
+      <ol>
         <% @workout.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
-      </ul>
+      </ol>
     </div>
   <% end %>
 

@@ -26,7 +26,12 @@ class WorkoutsController < ApplicationController
     
     def edit
         @workout = Workout.find(params[:id])
-        @exercises =Exercise.order(:name).all
+        if current_user.id == @workout.user_id
+            @exercises =Exercise.order(:name).all
+        else
+            flash[:alert] = "You cannot edit another user's workout."
+            redirect_to user_path(current_user)
+        end
     end
     
     def update
@@ -41,8 +46,13 @@ class WorkoutsController < ApplicationController
     
     def destroy
         @workout = Workout.find(params[:id])
-        @workout.destroy
-        redirect_to user_path(current_user)    
+        if current_user.id == @workout.user_id
+            @workout.destroy
+            redirect_to user_path(current_user)
+        else
+            flash[:alert] = "You cannot delete another user's workout."
+            redirect_to user_path(current_user)        
+        end     
     end
     
 

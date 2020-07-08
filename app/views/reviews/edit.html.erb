@@ -4,13 +4,13 @@
 <%= form_for(@review, { :controller => "reviews", :action => "new" }) do |f| %>
 
     <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h3>The following errors were detected:</h3>
-      <ul>
+    <div class="warning">
+      <h4>The following errors were detected:</h4>
+      <ol>
         <% @review.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
-      </ul>
+      </ol>
     </div>
   <% end %>
 

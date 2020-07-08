@@ -34,6 +34,7 @@ class ReviewsController < ApplicationController
         if current_user.id == Review.find(params[:id]).user_id
             @exercise = Exercise.all
         else
+            flash[:alert] = "You cannot edit another user's comment."
             redirect_to user_path(current_user) 
         end 
     end
