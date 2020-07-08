@@ -10,19 +10,22 @@
 <header>
 <div class="equalize">
         <% if logged_in? %>
-        <button> <%= link_to "Log Out", logout_path, method: :destroy %> </button>
-        <button> <%= link_to "User Home", user_path(current_user) %> </button>
-        <button> <%= link_to "Exercises", { :controller => "exercises", :action => "index" } %> </button>
-        <button>  <%= link_to "Reviews", { :controller => "reviews", :action => "index" } %> </button>
-        <button>  <%= link_to "Workouts", { :controller => "workouts", :action => "index" } %> </button>
+        <button class="menu"> <%= link_to "Log Out", logout_path, method: :destroy %> </button>
+        <button class="menu"> <%= link_to "User Home", user_path(current_user) %> </button>
+        <button class="menu"> <%= link_to "Exercises", { :controller => "exercises", :action => "index" } %> </button>
+        <button class="menu">  <%= link_to "Reviews", { :controller => "reviews", :action => "index" } %> </button>
+        <button class="menu">  <%= link_to "Workouts", { :controller => "workouts", :action => "index" } %> </button>
         <% end %>
 </div>
 
-<div>
+<div class="popup">
       <% flash.each do |message_type, message| %>
+      <br>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
-      <%= yield %>
-    </div>
+</div>
+      
+  <%= yield %>
+
 </body>
 </html>
