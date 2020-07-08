@@ -35,11 +35,11 @@
         "<%= link_to review.content, review_path(review) %>" by <%= User.find(review.user_id).username or none %> <br>
     <% end %>
     <br>
-    <button> <%= link_to "Add Review", new_review_path %> </button>
+    <button class="other"> <%= link_to "Add Review", new_review_path %> </button>
 
    <br><br>
 
 <h2>Other Actions</h2>
-<button> <%= link_to "Edit Exercise", edit_exercise_path %> </button> <br> <br>
-<%= button_to 'Delete Exercise', exercise_path(@exercise), :method => :delete %> </button> <br> 
-<button> <%= link_to "Back to Exercise Index", { :controller => "exercises", :action => "index" } %> </button>
+<button class="other"> <%= link_to "Edit Exercise", edit_exercise_path %> </button> <br> <br>
+<%= button_to 'Delete Exercise', exercise_path(@exercise), :method => :delete, :class => 'other' %> </button> <br> 
+<button class="other"> <%= link_to "Back to Exercise Index", { :controller => "exercises", :action => "index" } %> </button>

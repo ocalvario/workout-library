@@ -30,6 +30,7 @@
         </tr>
     </div>
 </table>
+<br>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.submit "Add Review" %>
+    <%= f.submit "Add Review", :class => 'menu', :class => 'other' %>
 <% end %>

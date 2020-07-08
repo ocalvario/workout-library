@@ -15,7 +15,7 @@
     </tr>
 </table>
 <br>
-    <%= f.submit "Login" %>
+<%= f.submit "Login", :class => 'menu' %>
 <% end %>
 <br>
- <button> <%= link_to "Log In with Google", '/auth/google_oauth2' %> <img src="https://tinyurl.com/yconnv5a" width="15" height="15"> </button>
+ <button class="menu"> <%= link_to "Google Login", '/auth/google_oauth2' %> <img src="https://tinyurl.com/yconnv5a" width="15" height="15"> </button>

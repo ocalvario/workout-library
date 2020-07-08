@@ -1,7 +1,7 @@
 <h1>Edit Review</h1>
 
 <h2>Details Form </h2>
-<%= form_for(@review, { :controller => "reviews", :action => "new" }) do |f| %>
+<%= form_for(@review, { :controller => "reviews", :action => "edit" }) do |f| %>
 
     <% if @review.errors.any? %>
     <div class="warning">
