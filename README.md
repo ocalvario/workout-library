@@ -8,7 +8,7 @@ To install this app, follow these steps:
 
 * Fork and clone this repository. 
 * $ bundle install 
-* $ rails db:migrate 
+* $ rake db:migrate 
 * $ rails server to open up the browser 
 * In your browser, enter http:localhost:3000.
 
