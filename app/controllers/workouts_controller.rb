@@ -21,6 +21,7 @@ class WorkoutsController < ApplicationController
 
     def show
         @workout = Workout.find(params[:id])
+        @user = User.find(@workout.user_id)
         render :show 
     end
     

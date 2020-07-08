@@ -8,8 +8,8 @@ class ReviewsController < ApplicationController
     end
     
     def new  
-        @exercise = Exercise.all
         @review = Review.new
+        @exercise = Exercise.all
     end
 
     def create
@@ -31,6 +31,7 @@ class ReviewsController < ApplicationController
     end 
 
     def edit
+        @review = Review.find(params[:id])
         if current_user.id == Review.find(params[:id]).user_id
             @exercise = Exercise.all
         else
