@@ -2,7 +2,19 @@
 
 <%= form_for(@workout, { :controller => "workouts", :action => "new" }) do |f| %>
 
+    <% if @workout.errors.any? %>
+    <div id="error_explanation">
+      <h3>The following errors were detected:</h3>
+      <ul>
+        <% @workout.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <table>
+<div class="field_with_errors">
     <tr>
         <th>Detail </th>
         <th>User Input</th>        
@@ -14,26 +26,27 @@
         <%= f.hidden_field :user_id, value: current_user.id %>
     <tr>
         <td> <%= f.label :first_exercise %> </td>
-        <td> <%= f.collection_select(:first_exercise, Exercise.all, :id, :name, include_blank: 'None') %> </td>
+        <td> <%= f.collection_select(:first_exercise, @exercises, :id, :name, include_blank: 'None') %> </td>
     </tr>
     <tr>
         <td> <%= f.label :second_exercise %> </td>
-        <td> <%= f.collection_select(:second_exercise, Exercise.all, :id, :name, include_blank: 'None') %> </td>
+        <td> <%= f.collection_select(:second_exercise, @exercises, :id, :name, include_blank: 'None') %> </td>
     </tr>
     <tr>
         <td> <%= f.label :third_exercise %> </td>
-        <td> <%= f.collection_select(:third_exercise, Exercise.all, :id, :name, include_blank: 'None') %> </td>
+        <td> <%= f.collection_select(:third_exercise, @exercises, :id, :name, include_blank: 'None') %> </td>
     </tr>
     <tr>
         <td> <%= f.label :fourth_exercise %> </td>
-        <td> <%= f.collection_select(:fourth_exercise, Exercise.all, :id, :name, include_blank: 'None') %> </td>
+        <td> <%= f.collection_select(:fourth_exercise, @exercises, :id, :name, include_blank: 'None') %> </td>
     </tr>
     <tr>
         <td> <%= f.label :fifth_exercise %> </td>
-        <td> <%= f.collection_select(:fifth_exercise, Exercise.all, :id, :name, include_blank: 'None') %> </td>
+        <td> <%= f.collection_select(:fifth_exercise, @exercises, :id, :name, include_blank: 'None') %> </td>
     </tr>
+</div>
 </table>
     <br><br>
-    <%= f.submit "Add Exercise"%>
+    <%= f.submit "Add Workout"%>
 
 <% end %>

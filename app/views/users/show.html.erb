@@ -2,8 +2,11 @@
 
 <h2>Quick Links</h3>
     
-    <button> <%= link_to "New Exercise", { :controller => "exercises", :action => "new" } %> </button> &nbsp;&nbsp;&nbsp;         
+<div class="equalize">
+    <button> <%= link_to "New Exercise", { :controller => "exercises", :action => "new" } %> </button>         
     <button> <%= link_to "New Review", { :controller => "reviews", :action => "new" } %> </button>
+    <button> <%= link_to "New Workout", { :controller => "workouts", :action => "new" } %> </button>
+</div>
 
 <h2>Exercises Created/Edited</h2>
 <h4>Total Exercises: <%=@exercises.count %> </h4>
@@ -19,7 +22,7 @@
     </tr>
     <% end %>
     </table>
-
+    <br>
 <h2>Reviews Added</h2>
 <h4>Total Reviews: <%=@reviews.count %> </h4>
         <table>
@@ -37,5 +40,20 @@
                 <% end %>
 
         </table>
-    
+
+<h2>Workouts Added</h2>
+<h4>Total Workouts: <%=@workouts.count %> </h4>
+        <table>
+            <tr>
+                <th>Workout</th>
+                <th>Date</th>
+            </tr>
+            <tr>
+                <% @workouts.each do |workout| %>
+                <td> <%=link_to link_to workout.name, workout_path(workout) %> </td>
+                <td> <%= workout.updated_at.strftime("%m-%d-%Y") %> </td>
+            </tr>
+                <% end %>
+
+        </table>
         

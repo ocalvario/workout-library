@@ -1,11 +1,12 @@
 class WorkoutsController < ApplicationController
   
     def index
-        @workouts = Workout.all
+        @workouts = Workout.order(:name).all
     end
 
     def new
         @workout = Workout.new
+        @exercises =Exercise.order(:name).all
     end
 
     def create
@@ -25,11 +26,12 @@ class WorkoutsController < ApplicationController
     
     def edit
         @workout = Workout.find(params[:id])
+        @exercises =Exercise.order(:name).all
     end
     
     def update
+        @exercises =Exercise.order(:name).all
         @workout = Workout.find(params[:id])
-        @exercises = Exercise.all
         if @workout.update(workout_params)
             render :show
         else
