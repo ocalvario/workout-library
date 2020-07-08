@@ -7,26 +7,38 @@ Created By: <%= link_to User.find(@workout.user_id).username, user_path(@workout
     <tr>
         <th>No.</th>
         <th>Exercise</th>
+        <th>Muscle Group</th>
+        <th>Equipment</th>
     </tr>
     <tr>
-        <td>First Exercise</td>
+        <td>1st</td>
         <td> <%= link_to Exercise.find(@workout.first_exercise).name, exercise_path(@workout.first_exercise) %> </td>
+        <td> <%= Exercise.find(@workout.first_exercise).body_part %> </td>
+        <td> <%= Exercise.find(@workout.first_exercise).equipment %> </td>
     </tr>
     <tr>
-        <td>Second Exercise</td>
-        <td> <%= link_to Exercise.find(@workout.second_exercise).name, exercise_path(@workout.second_exercise) %> </td>        
+        <td>2nd</td>
+        <td> <%= link_to Exercise.find(@workout.second_exercise).name, exercise_path(@workout.second_exercise) %> </td>
+        <td> <%= Exercise.find(@workout.second_exercise).body_part %> </td>
+        <td> <%= Exercise.find(@workout.second_exercise).equipment %> </td>        
     </tr>
     <tr>
-        <td>Third Exercise</td>
-        <td> <%= link_to Exercise.find(@workout.third_exercise).name, exercise_path(@workout.third_exercise) %> </td>        
+        <td>3rd</td>
+        <td> <%= link_to Exercise.find(@workout.third_exercise).name, exercise_path(@workout.third_exercise) %> </td>
+        <td> <%= Exercise.find(@workout.third_exercise).body_part %> </td>
+        <td> <%= Exercise.find(@workout.third_exercise).equipment %> </td>              
     </tr>
     <tr>
-        <td>Fourth Exercise</td>
-        <td> <%= link_to Exercise.find(@workout.fourth_exercise).name, exercise_path(@workout.fourth_exercise) %> </td>        
+        <td>4th</td>
+        <td> <%= link_to Exercise.find(@workout.fourth_exercise).name, exercise_path(@workout.fourth_exercise) %> </td>
+        <td> <%= Exercise.find(@workout.fourth_exercise).body_part %> </td>
+        <td> <%= Exercise.find(@workout.fourth_exercise).equipment %> </td>          
     </tr>
     <tr>
-        <td>Fifth Exercise</td>
-        <td> <%= link_to Exercise.find(@workout.fifth_exercise).name, exercise_path(@workout.fifth_exercise) %> </td>        
+        <td>5th</td>
+        <td> <%= link_to Exercise.find(@workout.fifth_exercise).name, exercise_path(@workout.fifth_exercise) %> </td>
+        <td> <%= Exercise.find(@workout.fifth_exercise).body_part %> </td>
+        <td> <%= Exercise.find(@workout.fifth_exercise).equipment %> </td>        
     </tr>    
 
 </table>
