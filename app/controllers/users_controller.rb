@@ -18,6 +18,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @exercises = Exercise.where(user_id: @user.id)
         @reviews = Review.where(user_id: @user.id)
+        @workouts = Workout.where(user_id: @user.id)
     end 
 
     private
