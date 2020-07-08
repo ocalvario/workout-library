@@ -21,10 +21,7 @@ Rails.application.routes.draw do
     get 'exercises/exercisegroup', to: 'exercises#exercisegroup'
     get 'exercises/equipment', to: 'exercises#equipment'
  
-  resources :reviews
-  resources :users
-  resources :exercises
-  resources :workouts
+  resources :reviews, :users, :exercises, :workouts
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
