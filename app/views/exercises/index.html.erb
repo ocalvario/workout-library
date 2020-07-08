@@ -1,8 +1,8 @@
 <h1>Exercise Index</h1>
 
 <h2> Quick Links</h2>
-<h4> <button class="other"> <%= link_to "New Exercise", { :controller => "exercises", :action => "new" } %></h4> </button>
-
+<button class="other"> <%= link_to "New Exercise", { :controller => "exercises", :action => "new" } %></h4> </button>
+<br><br>
 <h2>Specific Indices</h2>
 
 <div class="equalize">
@@ -10,6 +10,7 @@
     <button class="other"> <%= link_to "By Exercise Group",  { :controller => "exercises", :action => "exercisegroup" } %> </button> &nbsp;&nbsp;&nbsp; 
     <button class="other"> <%= link_to "By Equipment Type",  { :controller => "exercises", :action => "equipment" } %> </button>
 </div>
+<br><br>
 
 <h2>Full Exercise List</h2>
 <h3>Total Exercises: <%= @exercises.count %> </h3>
