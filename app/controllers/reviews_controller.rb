@@ -42,8 +42,9 @@ class ReviewsController < ApplicationController
     
     def update      
         @review = Review.find(params[:id])
-        @exercise = Exercise.all
+        @user = User.find(@review.user_id)
         if @review.update(review_params)
+            @exercise = Exercise.find(@review.exercise_id)
             render :show
         else
             render :edit

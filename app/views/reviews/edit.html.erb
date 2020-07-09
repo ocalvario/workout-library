@@ -22,7 +22,7 @@
     <div class="field_with_errors">
     <tr>
         <td> <%= f.label :exercise_id %> </td>
-        <td> <%= f.select :exercise_id, options_from_collection_for_select(@exercise, 'id', 'name')  %> </td>
+        <td> <%= f.select :exercise_id, options_from_collection_for_select(Exercise.all, 'id', 'name')  %> </td>
     </tr>
     <tr>
         <td> <%= f.label :content %> </td>
@@ -30,7 +30,8 @@
     </tr>
 </div>
 </table>
+<br>
         <%= f.hidden_field :user_id, value: current_user.id %>
-         <%= f.submit "Edit Review" %>
+         <%= f.submit "Edit Review", :class => 'other'%>
     
     <% end %>

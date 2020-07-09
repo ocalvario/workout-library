@@ -31,6 +31,7 @@ class ExercisesController < ApplicationController
     
     def show
         @exercise = Exercise.find(params[:id])
+        @user = User.find(@exercise.user_id)
         @reviews = Review.where(exercise_id: @exercise.id)
         render :show
     end
@@ -49,16 +50,16 @@ class ExercisesController < ApplicationController
         end  
     end 
 
-    def destroy
-        @exercise = Exercise.find(params[:id])
-        if @exercise.reviews_count == 0
-            @exercise.destroy
-            redirect_to user_path(current_user)
-        else
-          flash[:alert] = "You cannot delete an exercise with comments"
-          redirect_to user_path(current_user)
-        end    
-    end
+    # def destroy
+    #     @exercise = Exercise.find(params[:id])
+    #     if @exercise.reviews_count == 0
+    #         @exercise.destroy
+    #         redirect_to user_path(current_user)
+    #     else
+    #       flash[:alert] = "You cannot delete an exercise with comments"
+    #       redirect_to user_path(current_user)
+    #     end    
+    # end
 
 private
 
