@@ -1,22 +1,22 @@
 class SessionsController < ApplicationController
 
     def new
-        @user = User.new
+      @user = User.new
     end 
 
     def create
-        validate_login
+      validate_login
     end 
     
     def omniauth
-        @user = User.find_or_create_by_omniauth(auth)
-        @user.save
-        session[:user_id] = @user.id
-        redirect_to user_path(@user)
+      @user = User.find_or_create_by_omniauth(auth)
+      @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
     end
 
     def destroy
-        log_out
+      log_out
     end 
 
 private
