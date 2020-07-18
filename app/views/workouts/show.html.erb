@@ -45,4 +45,4 @@ Created By: <%= link_to User.find(@workout.user_id).username, user_path(@workout
 <br><br>
 <button class="other"> <%= link_to "Edit Workout", edit_workout_path %> </button> <br><br>
 <%= button_to 'Delete Workout', workout_path(@workout), :method => :delete, :class => 'other' %> </button> <br> 
-<button class="other"> <%= link_to "Back to Workout Index", { :controller => "workouts", :action => "index" } %> </button>
+<button class="other"> <%= link_to "Back to Workout Index", workouts_path %> </button>

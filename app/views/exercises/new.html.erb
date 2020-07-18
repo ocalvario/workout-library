@@ -1,7 +1,7 @@
 <h1>New Exercise </h1>
 
 <h2>Details Form </h2>
-<%= form_for(@exercise, { :controller => "exercises", :action => "new" }) do |f| %>
+<%= form_for @exercise do |f| %>
   
   <% if @exercise.errors.any? %>
   <div class="warning">
