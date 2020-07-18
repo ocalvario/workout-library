@@ -1,7 +1,7 @@
 <h1>Create New Review</h1>
 
 <h2>Details Form </h2>
-<%= form_for(@review, { :controller => "reviews", :action => "new" }) do |f| %>
+<%= form_for @review do |f| %>
 
   <% if @review.errors.any? %>
   <div class="warning">
@@ -22,7 +22,7 @@
   <div class="field_with_errors">
         <tr>
             <td> <%= f.label :exercise_id %> </td>
-            <td> <%= f.select :exercise_id, options_from_collection_for_select(Exercise.all, 'id', 'name') %> </td>
+            <td> <%= f.collection_select :exercise, Exercise.order(:name).all, :id, :name %> </td>
         </tr>
         <tr>
             <td> <%= f.label :content %> </td>
