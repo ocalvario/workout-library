@@ -1,12 +1,14 @@
 class WorkoutsController < ApplicationController
-  
+
+    before_action :find_workout, only: [:show, :edit, :update, :destroy]
+
     def index
         @workouts = Workout.order(:name).all
     end
 
     def new
         @workout = Workout.new
-        @exercises =Exercise.order(:name).all
+        list_exercises
     end
 
     def create
@@ -20,15 +22,13 @@ class WorkoutsController < ApplicationController
     end
 
     def show
-        @workout = Workout.find(params[:id])
         @user = User.find(@workout.user_id)
         render :show 
     end
     
     def edit
-        @workout = Workout.find(params[:id])
-        if current_user.id == @workout.user_id
-            @exercises =Exercise.order(:name).all
+        if user_check
+            list_exercises
         else
             flash[:alert] = "You cannot edit another user's workout."
             redirect_to user_path(current_user)
@@ -36,8 +36,7 @@ class WorkoutsController < ApplicationController
     end
     
     def update
-        @exercises =Exercise.order(:name).all
-        @workout = Workout.find(params[:id])
+        list_exercises
         if @workout.update(workout_params)
             render :show
         else
@@ -46,8 +45,7 @@ class WorkoutsController < ApplicationController
     end
     
     def destroy
-        @workout = Workout.find(params[:id])
-        if current_user.id == @workout.user_id
+        if user_check
             @workout.destroy
             redirect_to user_path(current_user)
         else
@@ -59,10 +57,20 @@ class WorkoutsController < ApplicationController
 
 private
 
+    def find_workout
+        @workout = Workout.find(params[:id])
+    end
+    
+    def list_exercises
+        @exercises = Exercise.order(:name).all
+    end
+
+    def user_check
+        current_user.id == @workout.user_id
+    end
+
     def workout_params
         params.require(:workout).permit(:name, :user_id, :first_exercise, :second_exercise, :third_exercise, :fourth_exercise, :fifth_exercise)
     end 
-
-    
 
 end 

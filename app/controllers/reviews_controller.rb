@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
     
+before_action :find_review, only: [:show, :edit, :update, :destroy]
+
     def index
         @reviews = Review.order(id: :desc).all
         @latest = @reviews.first
@@ -9,12 +11,9 @@ class ReviewsController < ApplicationController
     
     def new  
         @review = Review.new
-        @exercise = Exercise.all
     end
 
     def create
-        @user = current_user
-        @exercise = Exercise.all
         @review = Review.new(review_params)
         if @review.save
             redirect_to review_path(@review)
@@ -24,16 +23,11 @@ class ReviewsController < ApplicationController
     end
 
     def show
-        @review = Review.find(params[:id])
-        @user = User.find(@review.user_id)
-        @exercise = Exercise.find(@review.exercise_id)
-        render :show
+        find_exercise
     end 
 
     def edit
-        @review = Review.find(params[:id])
-        if current_user.id == Review.find(params[:id]).user_id
-            @exercise = Exercise.all
+        if user_check
         else
             flash[:alert] = "You cannot edit another user's comment."
             redirect_to user_path(current_user) 
@@ -41,10 +35,8 @@ class ReviewsController < ApplicationController
     end
     
     def update      
-        @review = Review.find(params[:id])
-        @user = User.find(@review.user_id)
         if @review.update(review_params)
-            @exercise = Exercise.find(@review.exercise_id)
+            find_exercise
             render :show
         else
             render :edit
@@ -52,9 +44,7 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        if current_user.id == Review.find(params[:id]).user_id
-            @user = current_user
-            @review = Review.find(params[:id])
+        if user_check
             @review.destroy
             redirect_to user_path(current_user)
         else
@@ -63,9 +53,21 @@ class ReviewsController < ApplicationController
         end
     end
     
-    
 
     private
+
+    def find_review
+        @review = Review.find(params[:id])
+    end
+
+    def find_exercise
+        @exercise = Exercise.find(@review.exercise_id)
+    end
+    
+    def user_check
+        current_user.id == Review.find(params[:id]).user_id
+    end
+
 
     def review_params
         params.require(:review).permit(:content, :exercise_id, :user_id)
