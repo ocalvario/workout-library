@@ -41,8 +41,11 @@ Created By: <%= link_to User.find(@workout.user_id).username, user_path(@workout
         <td> <%= Exercise.find(@workout.fifth_exercise).equipment %> </td>        
     </tr>
     <tr>
-        <td>Flagged Review</td>
-        <td> <%= link_to Review.find(@workout.review_ids[0]).content, review_path(@workout.review_ids[0]) %> </td>
+        <td>Flagged Reviews</td>
+         <% @workout.review_ids.each do |review_id| %>
+        <td> <li> <%= link_to Review.find(review_id).content, review_path(review_id) %> <br> </li> 
+            <% end %>
+        </td> 
     </tr>    
 
 </table>
