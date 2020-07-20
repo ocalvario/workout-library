@@ -3,11 +3,21 @@ class ExercisesController < ApplicationController
     before_action :find_exercise, only: [:show, :edit, :update]
     
     def index
-        @exercises = Exercise.order(:name).all
+        if logged_in?
+            @exercises = Exercise.order(:name).all
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end 
     end
     
     def new  
-        @exercise = Exercise.new
+        if logged_in? 
+            @exercise = Exercise.new
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end     
     end
 
     def create
@@ -20,10 +30,20 @@ class ExercisesController < ApplicationController
     end
     
     def show
-        find_reviews
+        if logged_in? 
+            find_reviews
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end
     end
 
     def edit
+        if logged_in? 
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end
     end
     
     def update
@@ -36,15 +56,31 @@ class ExercisesController < ApplicationController
     end
     
     def bodyparts
-        @exercises = Exercise.order(:body_part, :name).all
+        if logged_in?
+            @exercises = Exercise.order(:body_part, :name).all
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end 
     end
 
     def exercisegroup
-        @exercises = Exercise.order(:exercise_group, :name).all
+        if logged_in?
+            @exercises = Exercise.order(:exercise_group, :name).all
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end 
     end    
 
     def equipment
-        @exercises = Exercise.order(:equipment, :name).all
+        if logged_in?
+            @exercises = Exercise.order(:equipment, :name).all
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end 
+
     end 
 
 private

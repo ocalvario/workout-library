@@ -3,14 +3,24 @@ class ReviewsController < ApplicationController
 before_action :find_review, only: [:show, :edit, :update, :destroy]
 
     def index
-        @reviews = Review.order(id: :desc).all
-        @latest = @reviews.first
-        @commenter = User.order(reviews_count: :desc).first
-        @popular = Exercise.order(reviews_count: :desc).first
+        if logged_in?
+            @reviews = Review.order(id: :desc).all
+            @latest = @reviews.first
+            @commenter = User.order(reviews_count: :desc).first
+            @popular = Exercise.order(reviews_count: :desc).first
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end 
     end
     
     def new  
-        @review = Review.new
+        if logged_in?
+            @review = Review.new
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end 
     end
 
     def create
@@ -23,15 +33,25 @@ before_action :find_review, only: [:show, :edit, :update, :destroy]
     end
 
     def show
-        find_exercise
+        if logged_in?
+            find_exercise
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end     
     end 
 
     def edit
-        if user_check
+        if logged_in?
+            if user_check
+            else
+                flash[:alert] = "You cannot edit another user's comment."
+                redirect_to user_path(current_user) 
+            end
         else
-            flash[:alert] = "You cannot edit another user's comment."
-            redirect_to user_path(current_user) 
-        end 
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end  
     end
     
     def update      

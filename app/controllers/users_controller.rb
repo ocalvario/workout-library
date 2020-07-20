@@ -14,11 +14,16 @@ class UsersController < ApplicationController
         end
     end 
 
-    def show 
-        @user = User.find(params[:id])
-        @exercises = Exercise.where(user_id: @user.id)
-        @reviews = Review.where(user_id: @user.id)
-        @workouts = Workout.where(user_id: @user.id)
+    def show
+        if logged_in?  
+            @user = User.find(params[:id])
+            @exercises = Exercise.where(user_id: @user.id)
+            @reviews = Review.where(user_id: @user.id)
+            @workouts = Workout.where(user_id: @user.id)
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end 
     end 
 
     private

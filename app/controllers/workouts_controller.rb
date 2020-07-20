@@ -3,12 +3,22 @@ class WorkoutsController < ApplicationController
     before_action :find_workout, only: [:show, :edit, :update, :destroy]
 
     def index
-        @workouts = Workout.order(:name).all
+        if logged_in?
+            @workouts = Workout.order(:name).all
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end   
     end
 
     def new
-        @workout = Workout.new
-        list_exercises
+        if logged_in?
+            @workout = Workout.new
+            list_exercises
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end    
     end
 
     def create
@@ -22,17 +32,27 @@ class WorkoutsController < ApplicationController
     end
 
     def show
-        @user = User.find(@workout.user_id)
-        render :show 
+        if logged_in?    
+            @user = User.find(@workout.user_id)
+            render :show
+        else
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end 
     end
     
     def edit
-        if user_check
-            list_exercises
+        if logged_in? 
+            if user_check
+                list_exercises
+            else
+                flash[:alert] = "You cannot edit another user's workout."
+                redirect_to user_path(current_user)
+            end
         else
-            flash[:alert] = "You cannot edit another user's workout."
-            redirect_to user_path(current_user)
-        end
+            flash[:alert] = "Please login first"
+            redirect_to login_path
+        end 
     end
     
     def update
