@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_07_195242) do
+ActiveRecord::Schema.define(version: 2020_07_19_233558) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2020_07_07_195242) do
     t.integer "user_id"
     t.integer "reviews_count", default: 0
     t.index ["user_id"], name: "index_exercises_on_user_id"
+  end
+
+  create_table "flaggeds", force: :cascade do |t|
+    t.integer "workout_id"
+    t.integer "review_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id"], name: "index_flaggeds_on_review_id"
+    t.index ["workout_id"], name: "index_flaggeds_on_workout_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -52,8 +61,11 @@ ActiveRecord::Schema.define(version: 2020_07_07_195242) do
     t.string "third_exercise"
     t.string "fourth_exercise"
     t.string "fifth_exercise"
+    t.string "flagged_review"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "flaggeds", "reviews"
+  add_foreign_key "flaggeds", "workouts"
 end

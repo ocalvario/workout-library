@@ -8,8 +8,8 @@ class CreateWorkouts < ActiveRecord::Migration[6.0]
       t.string :third_exercise
       t.string :fourth_exercise
       t.string :fifth_exercise
+      t.string :flagged_review
       t.timestamps
     end
   end
 end
-

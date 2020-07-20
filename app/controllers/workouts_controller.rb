@@ -70,7 +70,7 @@ private
     end
 
     def workout_params
-        params.require(:workout).permit(:name, :user_id, :first_exercise, :second_exercise, :third_exercise, :fourth_exercise, :fifth_exercise)
+        params.require(:workout).permit(:name, :user_id, :first_exercise, :second_exercise, :third_exercise, :fourth_exercise, :fifth_exercise, review_ids: [])
     end 
 
 end 

@@ -39,6 +39,10 @@ Created By: <%= link_to User.find(@workout.user_id).username, user_path(@workout
         <td> <%= link_to Exercise.find(@workout.fifth_exercise).name, exercise_path(@workout.fifth_exercise) %> </td>
         <td> <%= Exercise.find(@workout.fifth_exercise).body_part %> </td>
         <td> <%= Exercise.find(@workout.fifth_exercise).equipment %> </td>        
+    </tr>
+    <tr>
+        <td>Flagged Review</td>
+        <td> <%= link_to Review.find(@workout.review_ids[0]).content, review_path(@workout.review_ids[0]) %> </td>
     </tr>    
 
 </table>

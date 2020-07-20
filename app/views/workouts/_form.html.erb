@@ -39,8 +39,14 @@
         <td> <%= f.collection_select(:fourth_exercise, @exercises, :id, :name, include_blank: 'None') %> </td>
     </tr>
     <tr>
-        <td> <%= f.label :fifth_exercise %> </td>
-        <td> <%= f.collection_select(:fifth_exercise, @exercises, :id, :name, include_blank: 'None') %> </td>
+    <td> <%= f.label :fifth_exercise %> </td>
+    <td> <%= f.collection_select(:fifth_exercise, @exercises, :id, :name, include_blank: 'None') %> </td>
+</tr>
+    <tr>
+        <td> <%= f.label :flagged_review %> </td>
+        <td> <%= f.collection_check_boxes :review_ids, Review.all, :id, :content %></td>
+    </tr>
+
     </tr>
     </div>
 </table>
