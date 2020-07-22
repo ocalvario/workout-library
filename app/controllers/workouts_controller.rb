@@ -34,6 +34,8 @@ class WorkoutsController < ApplicationController
     def show
         if logged_in?    
             @user = User.find(@workout.user_id)
+            @workout = Workout.find(params[:id])
+            @exercises = @workout.exercises
             render :show
         else
             flash[:alert] = "Please login first"

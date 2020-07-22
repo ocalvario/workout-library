@@ -23,8 +23,8 @@ class UsersController < ApplicationController
         if logged_in?  
             @user = User.find(params[:id])
             @exercises = Exercise.where(user_id: @user.id)
-            @reviews = Review.where(user_id: @user.id)
-            @workouts = Workout.where(user_id: @user.id)
+            @reviews = @user.reviews
+            @workouts = @user.workouts
         else
             flash[:alert] = "Please login first"
             redirect_to login_path
