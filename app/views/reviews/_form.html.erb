@@ -1,4 +1,5 @@
-<%= form_for @review do |f| %>
+<%= form_with(model: [@exercise, @review], local:true ) do |f| %>
+
 
     <% if @review.errors.any? %>
     <div class="warning">

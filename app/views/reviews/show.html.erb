@@ -33,6 +33,6 @@
     <tr>
 </table>
 <br><br>
-<button class="other"> <%= link_to "Edit Review", edit_review_path %> </button> <br>
+<button class="other"> <%= link_to "Edit Review", edit_exercise_review_path(@exercise, @review) %> </button> <br>
 <br>
-<%= button_to 'Delete Review', review_path(@review), :method => :delete, :class => 'other' %> <br>
+<%= button_to 'Delete Review', [@exercise, @review], :method => :delete, :class => 'other' %> <br>
