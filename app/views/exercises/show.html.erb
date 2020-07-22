@@ -32,11 +32,10 @@
 <h2> User Comments </h2>
  
     <% @reviews.each do |review| %>
-        "<%= link_to review.content, review_path(review) %>" by <%= User.find(review.user_id).username or none %> <br>
+        <%= link_to review.content, [@exercise, review] %> by <%= User.find(review.user_id).username or none %> <br>
     <% end %>
     <br>
-    <button class="other"> <%= link_to "Add Review", new_review_path %> </button>
-
+    <button class="other"> <%= link_to "Add Review", new_exercise_review_path(@exercise) %> </button>
    <br><br>
 
 <h2>Other Actions</h2>

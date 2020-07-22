@@ -43,7 +43,7 @@ Created By: <%= link_to User.find(@workout.user_id).username, user_path(@workout
     <tr>
         <td>Flagged Reviews</td>
          <% @workout.review_ids.each do |review_id| %>
-        <td> <li> <%= link_to Review.find(review_id).content, review_path(review_id) %> <br> </li> 
+        <td> <li> <%= Review.find(review_id).content %> <br> </li> 
             <% end %>
         </td> 
     </tr>    
