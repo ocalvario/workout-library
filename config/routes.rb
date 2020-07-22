@@ -20,8 +20,14 @@ Rails.application.routes.draw do
     get 'exercises/bodyparts', to: 'exercises#bodyparts'
     get 'exercises/exercisegroup', to: 'exercises#exercisegroup'
     get 'exercises/equipment', to: 'exercises#equipment'
+
+  #Reviews Nested Routes
  
-  resources :reviews, :users, :exercises, :workouts
+  resources :exercises do
+    resources :reviews  
+  end
+  
+  resources :users, :workouts
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
