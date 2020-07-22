@@ -3,9 +3,18 @@
 <h2> Quick Links</h2>
 <button class="other"> <%= link_to "New Exercise", new_exercise_path %></h4> </button>
 <br><br>
+
+<h2>Highlighted Exercises</h2>
+
+<h3>No equipment? No problem! Below are some bodyweight exercises: </h3>
+<% @bodyweight.each do |exercise| %>
+    <li> <%= link_to exercise.name, exercise_path(exercise) %> </li>
+<% end %>
+<br><br>
+
 <h2>Specific Indices</h2>
 
-<div class="equalize">
+<div class="equalize"> 
     <button class="other"> <%= link_to "By Muscle Group", exercises_bodyparts_path %> </button> &nbsp;&nbsp;&nbsp; 
     <button class="other"> <%= link_to "By Exercise Group", exercises_exercisegroup_path %> </button> &nbsp;&nbsp;&nbsp; 
     <button class="other"> <%= link_to "By Equipment Type", exercises_equipment_path %> </button>

@@ -5,6 +5,7 @@ class ExercisesController < ApplicationController
     def index
         if logged_in?
             @exercises = Exercise.order(:name).all
+            @bodyweight = Exercise.bodyweight.all
         else
             flash[:alert] = "Please login first"
             redirect_to login_path
@@ -54,6 +55,8 @@ class ExercisesController < ApplicationController
             render :edit
         end  
     end
+    
+
     
     def bodyparts
         if logged_in?
